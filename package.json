@@ -2,9 +2,10 @@
   "scripts": {
     "format": "npx prettier . --write",
     "build": "tsc -p tsconfig.json",
-    "test": "npm run build && npx mocha dist/specs/*.spec.js --timeout 120000 --parallel --retries 2"
+    "test": "npm run build && npx mocha dist/tests/specs/*.spec.js --timeout 120000 --parallel --retries 2"
   },
   "dependencies": {
+    "dotenv": "^17.2.4",
     "selenium-webdriver": "^4.40.0"
   },
   "devDependencies": {
