@@ -1,2 +1,4 @@
 # QAE-Selenium-TypeScript
-Test Automation w/ Selenium &amp; TS.
+
+Test automation framework using **Selenium WebDriver** and **TypeScript**, with **Mocha** as the test runner.
+
