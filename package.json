@@ -3,7 +3,7 @@
     "format": "npx prettier . --write",
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && npx mocha dist/tests/specs/*.spec.js --timeout 120000",
-    "flights-bookings": "npm run build && npx mocha dist/tests/specs/flights-bookins.spec.js --timeout 120000",
+    "flights-bookings": "npm run build && npx mocha dist/tests/specs/flights-bookings.spec.js --timeout 120000",
     "login": "npm run build && npx mocha dist/tests/specs/login.spec.js --timeout 120000"
   },
   "dependencies": {

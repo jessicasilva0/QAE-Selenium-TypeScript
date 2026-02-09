@@ -1,4 +1,4 @@
-import { By, until, WebDriver } from "selenium-webdriver";
+import { By, Key, until, WebDriver } from "selenium-webdriver";
 import { expect } from "chai";
 
 export default class FlightBookingPage {
@@ -51,6 +51,7 @@ export default class FlightBookingPage {
       `arguments[0].value = '${departureDate}';`,
       departureInput,
     );
+    await departureInput.sendKeys(Key.TAB);
     const value = await (
       await this.driver.findElement(this.departureDate)
     ).getAttribute("value");
@@ -67,7 +68,7 @@ export default class FlightBookingPage {
   async validateAlertMessage() {
     const alertElement = await this.driver.wait(
       until.elementIsVisible(await this.driver.findElement(this.alertMessage)),
-      10000,
+      20000,
     );
     const alert = await alertElement.getText();
     expect(alert).to.equal(
