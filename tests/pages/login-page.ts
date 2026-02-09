@@ -1,6 +1,5 @@
-import { By, until, WebDriver, WebElement } from "selenium-webdriver";
+import { By, until, WebDriver } from "selenium-webdriver";
 import { BaseURL } from "../utils/base-url";
-import { expect } from "chai";
 
 export default class LoginPage {
   private driver: WebDriver;
@@ -22,13 +21,13 @@ export default class LoginPage {
     await this.inputPassword(password);
   }
 
-  async inputUsername(email: string) {
+  private async inputUsername(email: string) {
     await this.driver.wait(until.elementLocated(this.emailAddress), 10000);
     const emailElement = await this.driver.findElement(this.emailAddress);
     await emailElement.sendKeys(email);
   }
 
-  async inputPassword(password: string) {
+  private async inputPassword(password: string) {
     await this.driver.wait(until.elementLocated(this.password), 10000);
     const passwordElement = await this.driver.findElement(this.password);
     await passwordElement.sendKeys(password);

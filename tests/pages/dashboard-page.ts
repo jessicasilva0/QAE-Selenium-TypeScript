@@ -23,11 +23,16 @@ export default class DashboardPage {
     await expandServices.click();
   }
 
-  async goToFlightsBooking() {
-    await this.clickServicesOptions();
+  async clickFlightsBooking() {
     await this.driver.wait(until.elementLocated(this.flightsBooking), 10000);
     const flightsLink = await this.driver.findElement(this.flightsBooking);
     expect(await flightsLink.getText()).to.include("Flights Booking");
     await flightsLink.click();
+  }
+
+  async goToFlightBooking() {
+    await this.validateRecentBookingScreen();
+    await this.clickServicesOptions();
+    await this.clickFlightsBooking();
   }
 }
