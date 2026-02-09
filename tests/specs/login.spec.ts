@@ -7,8 +7,14 @@ const emailAddress = process.env.email;
 const password = process.env.password;
 
 describe("Login", () => {
-  it("TC-01: Should open login page when navigating to base URL", async () => {
+  it("TC-01: Should login unsuccessfully with invalid credentials", async () => {
     await loginPage.goToLoginPage();
+    await loginPage.insertCredentials(
+      "invalid-email@gmail.com",
+      "invalid-password",
+    );
+    await loginPage.clickSignInButton();
+    await loginPage.errorMessageCredentials();
   });
 
   it("TC-02: Should login successfully with valid credentials and display dashboard", async () => {

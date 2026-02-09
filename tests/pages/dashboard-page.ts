@@ -12,6 +12,7 @@ export default class DashboardPage {
   }
 
   async validateRecentBookingScreen() {
+    await this.driver.wait(until.elementLocated(this.dashboard), 10000);
     const heading = this.driver.findElement(this.dashboard);
     const headingText = await heading.getText();
     expect(headingText).to.equal("Recent Bookings");

@@ -1,5 +1,6 @@
 import { By, until, WebDriver } from "selenium-webdriver";
 import { BaseURL } from "../utils/base-url";
+import { expect } from "chai";
 
 export default class LoginPage {
   private driver: WebDriver;
@@ -7,6 +8,7 @@ export default class LoginPage {
   private emailAddress = By.id("email");
   private password = By.id("password");
   private signInButton = By.css("button[type='submit']");
+  private alertError = By.css(".alert-error p");
 
   constructor(driver: WebDriver) {
     this.driver = driver;
@@ -37,5 +39,13 @@ export default class LoginPage {
     await this.driver.wait(until.elementLocated(this.signInButton), 10000);
     const loginBtn = await this.driver.findElement(this.signInButton);
     await loginBtn.click();
+  }
+
+  async errorMessageCredentials() {
+    await this.driver.wait(until.elementLocated(this.alertError), 10000);
+    const alertElement = await this.driver.findElement(this.alertError);
+    await this.driver.wait(until.elementIsVisible(alertElement), 10000);
+    const errorAlert = await alertElement.getText();
+    expect(errorAlert).to.equal("Error Invalid Credentials");
   }
 }

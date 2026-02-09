@@ -8,23 +8,26 @@ export default class FlightBookingPage {
   private departureDate = By.name("flights_departure_date");
   private alertMessage = By.css('[x-text="alertMessage"]');
   private searchFlightsBtn = By.css("button[type='submit']");
+  private datePickerBody = By.css("body");
 
   constructor(driver: WebDriver) {
     this.driver = driver;
   }
 
-  private async selectDepartureFrom(departure: string) {
+  async selectDepartureFrom(departure: string) {
     await this.driver.wait(until.elementLocated(this.departureFrom), 10000);
     const departureFrom = await this.driver.findElement(this.departureFrom);
-    await this.driver.wait(until.elementIsVisible(departureFrom), 50000);
-    await departureFrom.sendKeys(departure);
+    await this.driver.wait(until.elementIsEnabled(departureFrom), 50000);
+    await departureFrom.clear();
+    await departureFrom.sendKeys(departure, Key.ARROW_DOWN, Key.ENTER);
   }
 
-  private async selectArrivalTo(arrival: string) {
+  async selectArrivalTo(arrival: string) {
     await this.driver.wait(until.elementLocated(this.arrivalTo), 10000);
     const arrivalTo = await this.driver.findElement(this.arrivalTo);
-    await this.driver.wait(until.elementIsVisible(arrivalTo), 50000);
-    await arrivalTo.sendKeys(arrival);
+    await this.driver.wait(until.elementIsEnabled(arrivalTo), 50000);
+    await arrivalTo.clear();
+    await arrivalTo.sendKeys(arrival, Key.ARROW_DOWN, Key.ENTER);
   }
 
   async selectDepartureAndArrivalDates(
@@ -45,8 +48,7 @@ export default class FlightBookingPage {
   async departureDateInput(departureDate: string) {
     await this.driver.wait(until.elementLocated(this.departureDate), 10000);
     const departureInput = await this.driver.findElement(this.departureDate);
-    await departureInput.isEnabled();
-    await departureInput.click();
+    await this.driver.wait(until.elementIsVisible(departureInput), 50000);
     await this.driver.executeScript(
       `arguments[0].value = '${departureDate}';`,
       departureInput,
@@ -56,20 +58,25 @@ export default class FlightBookingPage {
       await this.driver.findElement(this.departureDate)
     ).getAttribute("value");
     expect(value).to.include(departureDate);
+    await this.driver.findElement(this.datePickerBody).click();
   }
 
   async clickSearchFlights() {
+    await this.driver.wait(until.elementLocated(this.searchFlightsBtn), 10000);
     const searchFlightsBtn = await this.driver.findElement(
       this.searchFlightsBtn,
     );
-    await searchFlightsBtn.click();
+    if (await searchFlightsBtn.isEnabled()) {
+      await searchFlightsBtn.click();
+    } else {
+      console.log("O botão de busca não está habilitado.");
+    }
   }
 
   async validateAlertMessage() {
-    const alertElement = await this.driver.wait(
-      until.elementIsVisible(await this.driver.findElement(this.alertMessage)),
-      20000,
-    );
+    await this.driver.wait(until.elementLocated(this.alertMessage), 10000);
+    const alertElement = await this.driver.findElement(this.alertMessage);
+    await this.driver.wait(until.elementIsVisible(alertElement), 10000);
     const alert = await alertElement.getText();
     expect(alert).to.equal(
       "Please select both departure and arrival airports!",
