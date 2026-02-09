@@ -1,8 +1,10 @@
 import { Builder, WebDriver } from "selenium-webdriver";
 import LoginPage from "../pages/login-page";
+import DashboardPage from "../pages/dashboard-page";
 
 let driver: WebDriver;
 export let loginPage: LoginPage;
+export let dashboardPage: DashboardPage;
 
 export async function getDriver() {
   if (!driver) {
@@ -20,6 +22,7 @@ export async function quitDriver() {
 before(async () => {
   driver = await getDriver();
   loginPage = new LoginPage(driver);
+  dashboardPage = new DashboardPage(driver);
 });
 
 after(async () => {

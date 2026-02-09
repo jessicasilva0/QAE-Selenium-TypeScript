@@ -1,5 +1,6 @@
-import { By, WebDriver, until, WebElementPromise } from "selenium-webdriver";
+import { By, until, WebDriver, WebElement } from "selenium-webdriver";
 import { BaseURL } from "../utils/base-url";
+import { expect } from "chai";
 
 export default class LoginPage {
   private driver: WebDriver;
@@ -22,14 +23,20 @@ export default class LoginPage {
   }
 
   async inputUsername(email: string) {
-    await this.driver.findElement(this.emailAddress).sendKeys(email);
+    await this.driver.wait(until.elementLocated(this.emailAddress), 10000);
+    const emailElement = await this.driver.findElement(this.emailAddress);
+    await emailElement.sendKeys(email);
   }
 
   async inputPassword(password: string) {
-    await this.driver.findElement(this.password).sendKeys(password);
+    await this.driver.wait(until.elementLocated(this.password), 10000);
+    const passwordElement = await this.driver.findElement(this.password);
+    await passwordElement.sendKeys(password);
   }
 
   async clickSignInButton() {
-    await this.driver.findElement(this.signInButton).click();
+    await this.driver.wait(until.elementLocated(this.signInButton), 10000);
+    const loginBtn = await this.driver.findElement(this.signInButton);
+    await loginBtn.click();
   }
 }

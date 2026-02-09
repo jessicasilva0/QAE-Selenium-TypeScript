@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { loginPage } from "../fixtures/pages-fixtures";
+import { loginPage, dashboardPage } from "../fixtures/pages-fixtures";
 dotenv.config();
 
 const emailAddress = process.env.email;
@@ -10,5 +10,7 @@ describe("Login", () => {
     await loginPage.goToLoginPage();
     await loginPage.insertCredentials(emailAddress!, password!);
     await loginPage.clickSignInButton();
+    await dashboardPage.validateRecentBookingScreen();
+    await dashboardPage.goToFlightsBooking();
   });
 });
