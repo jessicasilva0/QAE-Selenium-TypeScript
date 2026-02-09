@@ -29,6 +29,13 @@ npm install
 └── package.json
 ```
 
+- **tests/fixtures/**: Contains test setup and teardown configurations, including WebDriver initialization and shared hooks.
+- **tests/pages/**: Contains Page Object Models (POM) representing the application's pages and interactions.
+- **tests/specs/**: Contains the actual test files (specifications) testing various features.
+- **tests/utils/**: Contains helper functions
+- **tsconfig.json**: TypeScript compiler configuration.
+- **package.json**: Manages project dependencies and scripts.
+
 ### Environment variables
 
 Create a `.env` file in the project root with the credentials used by the login tests. Use `env.example.ts` as reference for the variable names and example values. The `.env` file is git-ignored and must not be committed.
@@ -59,3 +66,8 @@ npm run format
 Note: Linting TBD
 
 Tests use a shared Chrome WebDriver instance created in the fixture’s `before` hook and closed in the `after` hook.
+
+
+## Happy Testing 🖖
+
+@autor: Jessica Silva
