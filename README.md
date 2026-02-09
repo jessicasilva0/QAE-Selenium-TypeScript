@@ -41,4 +41,21 @@ TypeScript is compiled to the `dist/` folder (git-ignored). Mocha runs the compi
 npm test
 ```
 
+### Run specific tests
+
+```bash
+npm run login
+npm run flights-bookings
+```
+
+## Linting and Formatting
+
+Format code:
+
+```bash
+npm run format
+```
+
+Note: Linting TBD
+
 Tests use a shared Chrome WebDriver instance created in the fixture’s `before` hook and closed in the `after` hook.
