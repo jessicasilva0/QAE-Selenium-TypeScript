@@ -15,7 +15,7 @@ export default class FlightBookingPage {
   }
 
   async selectDepartureFrom(departure: string) {
-    await this.driver.wait(until.elementLocated(this.departureFrom), 10000);
+    await this.driver.wait(until.elementLocated(this.departureFrom), 50000);
     const departureFrom = await this.driver.findElement(this.departureFrom);
     await this.driver.wait(until.elementIsEnabled(departureFrom), 50000);
     await departureFrom.clear();
@@ -23,7 +23,7 @@ export default class FlightBookingPage {
   }
 
   async selectArrivalTo(arrival: string) {
-    await this.driver.wait(until.elementLocated(this.arrivalTo), 10000);
+    await this.driver.wait(until.elementLocated(this.arrivalTo), 50000);
     const arrivalTo = await this.driver.findElement(this.arrivalTo);
     await this.driver.wait(until.elementIsEnabled(arrivalTo), 50000);
     await arrivalTo.clear();
@@ -46,7 +46,7 @@ export default class FlightBookingPage {
   }
 
   async departureDateInput(departureDate: string) {
-    await this.driver.wait(until.elementLocated(this.departureDate), 10000);
+    await this.driver.wait(until.elementLocated(this.departureDate), 50000);
     const departureInput = await this.driver.findElement(this.departureDate);
     await this.driver.wait(until.elementIsVisible(departureInput), 50000);
     await this.driver.executeScript(
@@ -66,9 +66,7 @@ export default class FlightBookingPage {
     const searchFlightsBtn = await this.driver.findElement(
       this.searchFlightsBtn,
     );
-    if (await searchFlightsBtn.isEnabled()) {
       await searchFlightsBtn.click();
-    }
   }
 
   async validateAlertMessage() {

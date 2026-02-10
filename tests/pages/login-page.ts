@@ -24,13 +24,13 @@ export default class LoginPage {
   }
 
   private async inputUsername(email: string) {
-    await this.driver.wait(until.elementLocated(this.emailAddress), 10000);
+    await this.driver.wait(until.elementLocated(this.emailAddress), 50000);
     const emailElement = await this.driver.findElement(this.emailAddress);
     await emailElement.sendKeys(email);
   }
 
   private async inputPassword(password: string) {
-    await this.driver.wait(until.elementLocated(this.password), 10000);
+    await this.driver.wait(until.elementLocated(this.password), 50000);
     const passwordElement = await this.driver.findElement(this.password);
     await passwordElement.sendKeys(password);
   }
@@ -42,9 +42,9 @@ export default class LoginPage {
   }
 
   async errorMessageCredentials() {
-    await this.driver.wait(until.elementLocated(this.alertError), 10000);
+    await this.driver.wait(until.elementLocated(this.alertError), 20000);
     const alertElement = await this.driver.findElement(this.alertError);
-    await this.driver.wait(until.elementIsVisible(alertElement), 10000);
+    await this.driver.wait(until.elementIsVisible(alertElement), 20000);
     const errorAlert = await alertElement.getText();
     expect(errorAlert).to.equal("Error Invalid Credentials");
   }

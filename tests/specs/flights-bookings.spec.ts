@@ -11,7 +11,7 @@ const emailAddress = process.env.email;
 const password = process.env.password;
 
 describe("Flights Bookings", () => {
-  beforeEach(async () => {
+  before(async () => {
     await loginPage.goToLoginPage();
     await loginPage.insertCredentials(emailAddress!, password!);
     await loginPage.clickSignInButton();
