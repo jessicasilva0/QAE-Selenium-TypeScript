@@ -68,8 +68,6 @@ export default class FlightBookingPage {
     );
     if (await searchFlightsBtn.isEnabled()) {
       await searchFlightsBtn.click();
-    } else {
-      console.log("O botão de busca não está habilitado.");
     }
   }
 
