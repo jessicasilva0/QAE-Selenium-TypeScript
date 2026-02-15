@@ -11,6 +11,9 @@ export default class DashboardPage {
     this.driver = driver;
   }
 
+  /**
+   * Validate recent booking screen
+   */
   async validateRecentBookingScreen() {
     await this.driver.wait(until.elementLocated(this.dashboard), 20000);
     const heading = this.driver.findElement(this.dashboard);
@@ -18,12 +21,18 @@ export default class DashboardPage {
     expect(headingText).to.equal("Recent Bookings");
   }
 
+  /**
+   * Click on the services options
+   */
   async clickServicesOptions() {
     await this.driver.wait(until.elementLocated(this.servicesMenu), 5000);
     const expandServices = await this.driver.findElement(this.servicesMenu);
     await expandServices.click();
   }
 
+  /**
+   * Click on the flights booking link
+   */
   async clickFlightsBooking() {
     await this.driver.wait(until.elementLocated(this.flightsBooking), 20000);
     const flightsLink = await this.driver.findElement(this.flightsBooking);
@@ -32,6 +41,9 @@ export default class DashboardPage {
     await flightsLink.click();
   }
 
+  /**
+   * Navigate to flights booking page
+   */
   async goToFlightBooking() {
     await this.validateRecentBookingScreen();
     await this.clickServicesOptions();

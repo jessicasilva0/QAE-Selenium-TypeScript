@@ -14,6 +14,10 @@ export default class FlightBookingPage {
     this.driver = driver;
   }
 
+  /**
+   * Select departure airport
+   * @param departure Departure airport
+   */
   async selectDepartureFrom(departure: string) {
     await this.driver.wait(until.elementLocated(this.departureFrom), 50000);
     const departureFrom = await this.driver.findElement(this.departureFrom);
@@ -22,6 +26,10 @@ export default class FlightBookingPage {
     await departureFrom.sendKeys(departure, Key.ARROW_DOWN, Key.ENTER);
   }
 
+  /**
+   * Select arrival airport
+   * @param arrival Arrival airport
+   */
   async selectArrivalTo(arrival: string) {
     await this.driver.wait(until.elementLocated(this.arrivalTo), 50000);
     const arrivalTo = await this.driver.findElement(this.arrivalTo);
@@ -30,6 +38,12 @@ export default class FlightBookingPage {
     await arrivalTo.sendKeys(arrival, Key.ARROW_DOWN, Key.ENTER);
   }
 
+  /**
+   * Select departure and arrival dates
+   * @param departureFrom Departure airport
+   * @param arrivalTo Arrival airport
+   * @param departureDate Departure date
+   */
   async selectDepartureAndArrivalDates(
     departureFrom: string,
     arrivalTo: string,
@@ -45,6 +59,10 @@ export default class FlightBookingPage {
     }
   }
 
+  /**
+   * Enter departure date
+   * @param departureDate Departure date
+   */
   async departureDateInput(departureDate: string) {
     await this.driver.wait(until.elementLocated(this.departureDate), 50000);
     const departureInput = await this.driver.findElement(this.departureDate);
@@ -61,6 +79,9 @@ export default class FlightBookingPage {
     await this.driver.findElement(this.datePickerBody).click();
   }
 
+  /**
+   * Click search flights button
+   */
   async clickSearchFlights() {
     await this.driver.wait(until.elementLocated(this.searchFlightsBtn), 10000);
     const searchFlightsBtn = await this.driver.findElement(
@@ -69,6 +90,9 @@ export default class FlightBookingPage {
     await searchFlightsBtn.click();
   }
 
+  /**
+   * Validate alert message
+   */
   async validateAlertMessage() {
     await this.driver.wait(until.elementLocated(this.alertMessage), 10000);
     const alertElement = await this.driver.findElement(this.alertMessage);

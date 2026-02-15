@@ -8,6 +8,9 @@ export let loginPage!: LoginPage;
 export let dashboardPage!: DashboardPage;
 export let flightBookingPage!: FlightBookingPage;
 
+/**
+ * Initialize the driver and page objects
+ */
 export async function getDriver() {
   if (!driver) {
     driver = await new Builder().forBrowser("chrome").build();
@@ -18,6 +21,9 @@ export async function getDriver() {
   return driver;
 }
 
+/**
+ * Quit the driver
+ */
 export async function quitDriver() {
   if (driver) {
     await driver.quit();
