@@ -66,7 +66,7 @@ export default class FlightBookingPage {
     const searchFlightsBtn = await this.driver.findElement(
       this.searchFlightsBtn,
     );
-      await searchFlightsBtn.click();
+    await searchFlightsBtn.click();
   }
 
   async validateAlertMessage() {

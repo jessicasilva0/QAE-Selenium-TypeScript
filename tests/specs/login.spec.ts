@@ -1,5 +1,10 @@
 import dotenv from "dotenv";
-import { loginPage, dashboardPage, getDriver, quitDriver } from "../fixtures/pages-fixtures";
+import {
+  loginPage,
+  dashboardPage,
+  getDriver,
+  quitDriver,
+} from "../fixtures/pages-fixtures";
 
 dotenv.config();
 

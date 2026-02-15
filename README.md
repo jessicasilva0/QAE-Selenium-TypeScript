@@ -67,7 +67,6 @@ Note: Linting TBD
 
 Tests use a shared Chrome WebDriver instance created in the fixture’s `before` hook and closed in the `after` hook.
 
-
 ## Happy Testing 🖖
 
 @autor: Jessica Silva
