@@ -6,6 +6,7 @@ import {
   getDriver,
   quitDriver,
 } from "../fixtures/pages-fixtures";
+import * as testData from "../utils/test-data";
 
 dotenv.config();
 
@@ -30,14 +31,14 @@ describe("Flights Bookings", () => {
   });
 
   it("TC-02: Should show alert when searching flights without departure airport", async () => {
-    await flightBookingPage.selectDepartureAndArrivalDates("", "LIS", "");
+    await flightBookingPage.selectDepartureAndArrivalDates("", testData.departureInfo.arrivalTo, "");
   });
 
   it("TC-03: Should show alert when searching flights without arrival airport", async () => {
-    await flightBookingPage.selectDepartureAndArrivalDates("OPO", "", "");
+    await flightBookingPage.selectDepartureAndArrivalDates(testData.departureInfo.departureFrom, "", "");
   });
 
   it("TC-04: Should allow entering a valid departure date", async () => {
-    await flightBookingPage.departureDateInput("15-02-2026");
+    await flightBookingPage.departureDateInput(testData.departureInfo.departureDate);
   });
 });
