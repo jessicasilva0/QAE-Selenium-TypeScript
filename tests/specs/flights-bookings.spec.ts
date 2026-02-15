@@ -3,6 +3,8 @@ import {
   loginPage,
   dashboardPage,
   flightBookingPage,
+  getDriver,
+  quitDriver,
 } from "../fixtures/pages-fixtures";
 
 dotenv.config();
@@ -11,11 +13,16 @@ const emailAddress = process.env.email;
 const password = process.env.password;
 
 describe("Flights Bookings", () => {
-  before(async () => {
+  beforeEach(async () => {
+    await getDriver();
     await loginPage.goToLoginPage();
     await loginPage.insertCredentials(emailAddress!, password!);
     await loginPage.clickSignInButton();
     await dashboardPage.goToFlightBooking();
+  });
+
+  afterEach(async () => {
+    await quitDriver();
   });
 
   it("TC-01: Should show alert when searching flights without departure and arrival", async () => {
