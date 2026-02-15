@@ -65,7 +65,13 @@ npm run format
 
 Note: Linting TBD
 
-Tests use a shared Chrome WebDriver instance created in the fixture’s `before` hook and closed in the `after` hook.
+## Technical Decisions
+
+To meet the challenge requirements, for detailed information about the framework selection and test implementation strategies, see:
+
+**[TECHNICAL_DECISIONS.md](TECHNICAL_DECISIONS.md)**
+
+
 
 ## Happy Testing 🖖
 
