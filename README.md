@@ -10,11 +10,59 @@ Test automation framework using **Selenium WebDriver** and **TypeScript**, with 
 
 ## Installation
 
+1. **Clone the repository and open the project:**
+
 ```bash
 git clone https://github.com/jessicasilva0/QAE-Selenium-TypeScript.git
 cd QAE-Selenium-TypeScript
+```
+
+2. **Open a new terminal window in your IDE and run the command to install dependencies.:**
+
+```bash
 npm install
 ```
+
+3. **Create a `.env` file in the project root with the credentials used by the login tests.**
+
+Use `env.example.ts` as reference for the variable names and example values. The `.env` file is git-ignored and must not be committed.
+
+```bash
+email=""
+password=""
+```
+
+## Running tests
+
+**Run all tests:**
+
+```bash
+npm test
+```
+
+### Run specific tests
+
+**Run login tests:**
+
+```bash
+npm run login
+```
+
+**Run flights-bookings:**
+
+```bash
+npm run flights-bookings
+```
+
+## Linting and Formatting
+
+**Run the command to format code with Prettier:**
+
+```bash
+npm run format
+```
+
+Note: Linting TBD
 
 ## Project structure
 
@@ -36,42 +84,13 @@ npm install
 - **tsconfig.json**: TypeScript compiler configuration.
 - **package.json**: Manages project dependencies and scripts.
 
-### Environment variables
-
-Create a `.env` file in the project root with the credentials used by the login tests. Use `env.example.ts` as reference for the variable names and example values. The `.env` file is git-ignored and must not be committed.
-
 TypeScript is compiled to the `dist/` folder (git-ignored). Mocha runs the compiled `.js` files.
-
-## Running tests
-
-```bash
-npm test
-```
-
-### Run specific tests
-
-```bash
-npm run login
-npm run flights-bookings
-```
-
-## Linting and Formatting
-
-Format code:
-
-```bash
-npm run format
-```
-
-Note: Linting TBD
 
 ## Technical Decisions
 
 To meet the challenge requirements, for detailed information about the framework selection and test implementation strategies, see:
 
 **[TECHNICAL_DECISIONS.md](TECHNICAL_DECISIONS.md)**
-
-
 
 ## Happy Testing 🖖
 

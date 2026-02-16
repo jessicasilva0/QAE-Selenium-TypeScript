@@ -31,17 +31,16 @@ Tests are organized by **feature modules** with clear naming conventions:
 
 ## Tools & Libraries
 
-| Tool                | Purpose                                    |
-| ------------------- | ------------------------------------------ |
-| Selenium WebDriver  | Browser automation and UI interaction      |
-| TypeScript          | Type-safe test development                 |
-| Mocha               | Test framework and test runner             |
-| Chai                | Assertion library                          |
-| Faker.js            | Generate dynamic test data (airports, etc) |
-| Luxon               | Date/time handling and formatting          |
-| dotenv              | Environment variable management            |
-| Prettier            | Code formatting                            |
-
+| Tool               | Purpose                                    |
+| ------------------ | ------------------------------------------ |
+| Selenium WebDriver | Browser automation and UI interaction      |
+| TypeScript         | Type-safe test development                 |
+| Mocha              | Test framework and test runner             |
+| Chai               | Assertion library                          |
+| Faker.js           | Generate dynamic test data (airports, etc) |
+| Luxon              | Date/time handling and formatting          |
+| dotenv             | Environment variable management            |
+| Prettier           | Code formatting                            |
 
 ## TypeScript Configuration
 
@@ -75,8 +74,8 @@ After the implementation of tests and script creation, the commands to format an
 
 - **Prettier configuration:** Default Prettier rules for consistent code style
 - **TypeScript strict mode:** Catches potential bugs at compile time
-- **Naming conventions:** 
-**camelCase** is used throughout the project for:
+- **Naming conventions:**
+  **camelCase** is used throughout the project for:
   - Variables: `emailAddress`, `departureInfo`, `flightBookingPage`
   - Functions and Methods: `getDriver()`, `quitDriver()`, `goToLoginPage()`, `insertCredentials()`
   - Test data objects: `departureInfo`, `testData`
@@ -98,7 +97,6 @@ npm run flights-bookings    # Run flight booking tests only
 **Test execution results**
 
 ![All tests passing](tests/utils/assets/all-tests.png)
-
 
 ### Driver Management
 

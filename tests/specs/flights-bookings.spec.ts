@@ -31,14 +31,24 @@ describe("Flights Bookings", () => {
   });
 
   it("TC-02: Should show alert when searching flights without departure airport", async () => {
-    await flightBookingPage.selectDepartureAndArrivalDates("", testData.departureInfo.arrivalTo, "");
+    await flightBookingPage.selectDepartureAndArrivalDates(
+      "",
+      testData.departureInfo.arrivalTo,
+      "",
+    );
   });
 
   it("TC-03: Should show alert when searching flights without arrival airport", async () => {
-    await flightBookingPage.selectDepartureAndArrivalDates(testData.departureInfo.departureFrom, "", "");
+    await flightBookingPage.selectDepartureAndArrivalDates(
+      testData.departureInfo.departureFrom,
+      "",
+      "",
+    );
   });
 
   it("TC-04: Should allow entering a valid departure date", async () => {
-    await flightBookingPage.departureDateInput(testData.departureInfo.departureDate);
+    await flightBookingPage.departureDateInput(
+      testData.departureInfo.departureDate,
+    );
   });
 });
